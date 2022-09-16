@@ -56,6 +56,14 @@ return [
             'throw' => false,
         ],
 
+        'ftp' => [
+            'driver' => 'ftp',
+            'host' => 'dominio',
+            'username' => 'Toño',
+            'password' => '123',
+            'root' => '/', // ---> Es donde se va iniciar el servidor
+        ]
+
     ],
 
     /*

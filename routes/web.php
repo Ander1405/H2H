@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\UploadFileController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('view/uploads', [UploadFileController::class, 'loadView']);
+
+Route::post('view/uploads', [UploadFileController::class, 'storeFile'])
+    ->name('uploads.file');
+
+Route::get('download/files/{name}', [UploadFileController::class, 'downloadFile'])
+    ->name('download');
+
+Route::delete('delete', [UploadFileController::class, 'delete'])
+    ->name('delete');
+
+
+
+
+
+
+Route::get('ftp', function (){
+   $files = Storage::disk('ftp')->allfiles();
+});
+
+
+
+
